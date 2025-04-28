@@ -10,6 +10,7 @@
     android:background="@drawable/fondo_champions">
 
     <Button
+        android:id="@+id/buComenzar"
         android:layout_width="165dp"
         android:layout_height="52dp"
         android:backgroundTint="@color/lightgreen"

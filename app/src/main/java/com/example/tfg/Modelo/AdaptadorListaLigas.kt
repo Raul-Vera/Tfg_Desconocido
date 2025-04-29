@@ -1,5 +1,7 @@
 package com.example.tfg.Modelo
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tfg.R
 import com.squareup.picasso.Picasso
 
-class AdaptadorListaLigas(private  val elementos:List<OpcionLiga>,private val onItemClick:(Int)-> Unit): RecyclerView.Adapter<AdaptadorListaLigas.ViewHolder>() {
+class AdaptadorListaLigas(private  val elementos:List<OpcionLiga>, private val context: Context, private val onItemClick:(Int)-> Unit): RecyclerView.Adapter<AdaptadorListaLigas.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val tvNombre=view.findViewById<TextView>(R.id.tvLiga)
         val ivLogo=view.findViewById<ImageView>(R.id.ivLogo)
@@ -26,6 +28,7 @@ class AdaptadorListaLigas(private  val elementos:List<OpcionLiga>,private val on
         Picasso.get().load(elemento.log).into(holder.ivLogo)
         Picasso.get().load(elemento.paisurl).into(holder.ivPais)
         holder.itemView.setOnClickListener {
+            Log.d("Recicler View","Elemento clivado: ${elemento.id}")
             onItemClick(elemento.id)
         }
     }

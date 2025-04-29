@@ -27,5 +27,6 @@ class MainActivity : AppCompatActivity() {
     fun Comenzar(){
         val actividad= Intent(this, Dificultad::class.java)
         startActivity(actividad)
+        finish()
     }
 }

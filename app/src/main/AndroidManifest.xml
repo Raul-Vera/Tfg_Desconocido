@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Tfg"
         tools:targetApi="31">
         <activity
+            android:name=".InicioJuego"
+            android:exported="false" />
+        <activity
             android:name=".EleccionLigas"
             android:exported="false" />
         <activity

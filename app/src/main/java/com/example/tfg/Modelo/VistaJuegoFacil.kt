@@ -21,7 +21,7 @@ import androidx.room.DatabaseView
         "                         JOIN posiciones AS po USING(id_posicion)\n" +
         "                         JOIN clubes AS c USING(id_club)\n" +
         "                         JOIN paises AS p USING(id_pais)\n" +
-        "                        JOIN ligas AS l ON (c.id_liga = l.id_competicion)         JOIN competiciones AS cc USING(id_competicion) where valor_jugador>20")
+        "                        JOIN ligas AS l ON (c.id_liga = l.id_competicion)         JOIN competiciones AS cc USING(id_competicion) where valor_jugador>20 order by Random()")
 data class VistaJuegoFacil (
     val id_jugador: Int,
     val apodo_jugador: String,

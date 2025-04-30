@@ -56,17 +56,17 @@ class InicioJuego : AppCompatActivity() {
     fun iniciar() {
         Log.d("InicioJuego", "La función iniciar() ha sido llamada")
 
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, JuegoFacil::class.java)
         lifecycleScope.launch(Dispatchers.IO) {
-            ControladorBd.db = Room.databaseBuilder(applicationContext, AppDatabase::class.java,"DesconocidoBDv2.1"
+            ControladorBd.db = Room.databaseBuilder(applicationContext, AppDatabase::class.java,"DesconocidoBDv2.3"
             ).createFromAsset("BBDD/desconocidodbroomv2.db").build()
             Log.d("InicioJuego", "Base de datos creada correctamente")
             // Asignar vistadao en el hilo principal después de crear la base de datos
             withContext(Dispatchers.Main) {
-                ControladorBd.juegoFacilDao= ControladorBd.db.juegoClasicoDao()
-                Log.d("InicioJuego", "DAO creado correctamente: ${ControladorBd.juegoFacilDao}")
-                Log.d("Lista de jugadores","${ControladorBd.juegoFacilDao.obtenerJugadoresFacil(
-                    ConfigGlobal.ligaSeleccionada)}")
+                ControladorBd.juegoFacilDao= ControladorBd.db.juegoFacilDao()
+                ControladorBd.juegoDificilDao= ControladorBd.db.juegoDificilDao()
+                startActivity(intent)
+                finish()
             }
         }
     }

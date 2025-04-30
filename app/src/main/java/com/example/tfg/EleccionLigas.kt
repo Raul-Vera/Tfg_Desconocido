@@ -41,8 +41,9 @@ class EleccionLigas : AppCompatActivity() {
         }
         rvListaLigas = findViewById<RecyclerView>(R.id.rvlistaLigas)
         val adapter = AdaptadorListaLigas(listaLigas, this) { id ->
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, InicioJuego::class.java)
             ConfigGlobal.seleccionarLiga(id)
+            startActivity(intent)
             print("Se selecciono esta liga " + ConfigGlobal.ligaSeleccionada)
         }
         rvListaLigas.layoutManager= LinearLayoutManager(this)

@@ -44,6 +44,7 @@ class EleccionLigas : AppCompatActivity() {
             val intent = Intent(this, InicioJuego::class.java)
             ConfigGlobal.seleccionarLiga(id)
             startActivity(intent)
+            finish()
             print("Se selecciono esta liga " + ConfigGlobal.ligaSeleccionada)
         }
         rvListaLigas.layoutManager= LinearLayoutManager(this)

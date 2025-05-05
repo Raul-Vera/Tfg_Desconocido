@@ -1,6 +1,7 @@
 package com.example.tfg.Controlador
 
 import android.content.Context
+import android.content.Intent
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.tfg.Configuracion.ConfigGlobal
 import com.example.tfg.Estadisticas.Estadisticas
+import com.example.tfg.MainActivity
 import com.example.tfg.Modelo.VistaJuegoFacil
 import com.example.tfg.R
 import com.squareup.picasso.Picasso
@@ -20,12 +22,13 @@ class ControladorJuegoFacil {
         var aciertoPais=false
         var aciertoEdad=false
         var aciertoPosicion=false
-        lateinit var listaJugadores: List<VistaJuegoFacil>
+        var aciertoJugador=false
+        lateinit var listaJugadores: MutableList<VistaJuegoFacil>
         lateinit var jugadorDesconocido: VistaJuegoFacil
 
         /**Genera una lista de jugadores para el modo facil
          * @return Devulve una lista conformada por jugadore para el modo facil**/
-        suspend fun generarLista(): List<VistaJuegoFacil> {
+        suspend fun generarLista(): MutableList<VistaJuegoFacil> {
             ControladorJuegoFacil.listaJugadores =
                 ControladorBd.juegoFacilDao.obtenerJugadoresFacil(
                     ConfigGlobal.ligaSeleccionada
@@ -39,7 +42,7 @@ class ControladorJuegoFacil {
         fun elegirJugador(): VistaJuegoFacil {
             val numeroAleatorio = (1..100).random()
             for (i in 1..numeroAleatorio) {
-                listaJugadores = listaJugadores.shuffled()
+                listaJugadores = listaJugadores.shuffled().toMutableList()
             }
             return listaJugadores.first()
         }
@@ -281,6 +284,7 @@ class ControladorJuegoFacil {
             }
 
             etJugador.isEnabled = false
+            aciertoJugador=true
         }
         fun desvelarCompleto(
             tvPosicion: TextView, etPosicion: EditText,
@@ -295,6 +299,38 @@ class ControladorJuegoFacil {
             if(!aciertoClub)desvelarClub(ivClub, etClub, context)
             if(!aciertoPais)desvelarPais(ivPais, etPais, context)
             desvelarJugador(ivJugador, etJugador, context)
+        }
+        fun reiniciar(){
+            listacreada=false
+            Estadisticas.reiniciarFallos()
+            Estadisticas.reiniciarAciertos()
+        }
+        fun jugadorAcertado(){
+            if(listaJugadores!=null){
+                listaJugadores.remove(jugadorDesconocido)
+            }
+            aciertoJugador=false
+            aciertoClub=false
+            aciertoPais=false
+            aciertoEdad=false
+            aciertoPosicion=false
+
+            Estadisticas.reiniciarFallos()
+            Estadisticas.aumentarAciertos()
+        }
+        fun pista(  tvPosicion: TextView, etPosicion: EditText,
+                    tvEdad: TextView, etEdad: EditText,
+                    ivClub: ImageView, etClub: EditText,
+                    ivPais: ImageView, etPais: EditText,
+                    ivJugador: ImageView, etJugador: EditText,contexto: Context){
+            val campos=listOf<String>("Posicion","Edad","Club","Pais");
+            val camposremovida=campos.shuffled()
+            when(camposremovida.first()){
+                "Posicion"->desvelarPosicion(tvPosicion,etPosicion,contexto);
+                "Edad"->desvelarEdad(tvEdad,etEdad,contexto)
+                "Club"->desvelarClub(ivClub,etClub,contexto)
+                "Pais"->desvelarPais(ivPais,etPais,contexto)
+            }
         }
 
     }

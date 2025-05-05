@@ -3,35 +3,32 @@ package com.example.tfg
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.tfg.Configuracion.ConfigGlobal
+import com.example.tfg.Controlador.ControladorJuegoFacil
+import com.example.tfg.Estadisticas.Estadisticas
 
-class Dificultad : AppCompatActivity() {
-    lateinit var buFacil: Button
-    lateinit var buDificil: Button
-
+class PartidaPerdida : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_dificultad)
+        setContentView(R.layout.activity_partida_perdida)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        buFacil=findViewById<Button>(R.id.buFacil)
-        buDificil=findViewById<Button>(R.id.buDificil)
-        buFacil.setOnClickListener {
-            ConfigGlobal.cambiarDificultad(false)
-            startActivity(Intent(this, EleccionLigas::class.java))
-            finish()
-        }
-        buDificil.setOnClickListener {
-            ConfigGlobal.cambiarDificultad(true)
-            startActivity(Intent(this, EleccionLigas::class.java))
+        val tvCono=findViewById<TextView>(R.id.tvCono)
+        val tvRacha=findViewById<TextView>(R.id.tvRacha)
+        val buReiniciar=findViewById<Button>(R.id.buReiniciar)
+        tvRacha.append(" "+ Estadisticas.aciertos)
+        buReiniciar.setOnClickListener {
+            val casa= Intent(this, Dificultad::class.java)
+            ControladorJuegoFacil.reiniciar()
+            startActivity(casa)
             finish()
         }
     }

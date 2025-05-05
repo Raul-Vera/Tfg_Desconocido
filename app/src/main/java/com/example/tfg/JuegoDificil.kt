@@ -19,11 +19,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class JuegoFacil : AppCompatActivity() {
+class JuegoDificil : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_juego_facil)
+        setContentView(R.layout.activity_juego_dificil)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -43,11 +43,13 @@ class JuegoFacil : AppCompatActivity() {
         var etPais = findViewById<EditText>(R.id.etPais)
         var tvEdad = findViewById<TextView>(R.id.tvEdad)
         var tvPosicion = findViewById<TextView>(R.id.tvPosicion)
+        var tvValor=findViewById<TextView>(R.id.tvValor)
+        var etValor=findViewById<EditText>(R.id.etValor)
         ivIconoContinuar.isEnabled=false
         ivIconoContinuar.visibility= View.INVISIBLE
         lifecycleScope.launch(Dispatchers.IO) {
             if (!ControladorJuego.listacreada) {
-                ControladorJuego.generarListaFacil()
+                ControladorJuego.generarListaDificil()
                 Log.d("ListaCreada", "${ControladorJuego.listaJugadores.size}")
             }
             ControladorJuego.jugadorDesconocido = ControladorJuego.elegirJugador()
@@ -56,21 +58,23 @@ class JuegoFacil : AppCompatActivity() {
                 ControladorJuego.iniciarEscuchadorPosicion(
                     etPosicion,
                     tvPosicion,
-                    this@JuegoFacil
+                    this@JuegoDificil
                 )
-                ControladorJuego.iniciarEscuchadorEdad(etEdad, tvEdad, this@JuegoFacil)
-                ControladorJuego.iniciarEscuchadorClub(etClub, ivClub, this@JuegoFacil)
-                ControladorJuego.iniciarEscuchadorPais(etPais, ivPais, this@JuegoFacil)
+                ControladorJuego.iniciarEscuchadorEdad(etEdad, tvEdad, this@JuegoDificil)
+                ControladorJuego.iniciarEscuchadorClub(etClub, ivClub, this@JuegoDificil)
+                ControladorJuego.iniciarEscuchadorPais(etPais, ivPais, this@JuegoDificil)
+                ControladorJuego.iniciarEscuchadorValor(etValor,tvValor,this@JuegoDificil)
                 ControladorJuego.iniciarEscuchadorJugador(
                     etJugador, ivJugador,
                     tvPosicion, etPosicion,
                     tvEdad, etEdad,
                     ivClub, etClub,
-                    ivPais, etPais,tvEdad,etEdad,
-                    this@JuegoFacil
+                    ivPais, etPais,tvValor,
+                    etValor,
+                    this@JuegoDificil
                 )
-                ControladorJuego.pistaFacil( tvPosicion, etPosicion, tvEdad, etEdad,ivClub, etClub,ivPais, etPais,  ivJugador,etJugador,
-                    this@JuegoFacil)
+                ControladorJuego.pistaDificil( tvPosicion, etPosicion, tvEdad, etEdad,ivClub, etClub,ivPais, etPais,  ivJugador,etJugador,tvValor,etValor,
+                    this@JuegoDificil)
 
                 while (true) {
                     tvFallos.text = "Fallos: " + Estadisticas.fallos.toString()
@@ -80,7 +84,7 @@ class JuegoFacil : AppCompatActivity() {
                         ivIconoContinuar.visibility=View.VISIBLE
                     }
                     if(Estadisticas.comprobarFallos()){
-                        val perdido= Intent(this@JuegoFacil, PartidaPerdida::class.java)
+                        val perdido= Intent(this@JuegoDificil, PartidaPerdida::class.java)
                         startActivity(perdido)
                         finish()
                     }
@@ -98,10 +102,9 @@ class JuegoFacil : AppCompatActivity() {
         ivIconoContinuar.setOnClickListener {
             ControladorJuego.jugadorAcertado()
             Log.d("Cantidad de jugadores", ControladorJuego.listaJugadores.size.toString())
-            val intent = Intent(this, JuegoFacil::class.java)
+            val intent = Intent(this, JuegoDificil::class.java)
             startActivity(intent)
             finish()
         }
     }
-
 }

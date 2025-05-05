@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [Club::class, Competicion::class, Continente::class, Copa_continental::class,Jugador::class, Liga::class, Posicion::class, Pais::class,],
-    views = [VistaJuegoFacil::class, VistaJuegoDificil::class],
+    views = [VistaJuego::class],
     exportSchema = false,
     version = 1
 )

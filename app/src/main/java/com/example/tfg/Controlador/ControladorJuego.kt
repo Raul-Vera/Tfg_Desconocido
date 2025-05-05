@@ -1,7 +1,6 @@
 package com.example.tfg.Controlador
 
 import android.content.Context
-import android.content.Intent
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -10,12 +9,11 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.tfg.Configuracion.ConfigGlobal
 import com.example.tfg.Estadisticas.Estadisticas
-import com.example.tfg.MainActivity
-import com.example.tfg.Modelo.VistaJuegoFacil
+import com.example.tfg.Modelo.VistaJuego
 import com.example.tfg.R
 import com.squareup.picasso.Picasso
 
-class ControladorJuegoFacil {
+class ControladorJuego {
     companion object {
         var listacreada=false
         var aciertoClub=false
@@ -23,24 +21,35 @@ class ControladorJuegoFacil {
         var aciertoEdad=false
         var aciertoPosicion=false
         var aciertoJugador=false
-        lateinit var listaJugadores: MutableList<VistaJuegoFacil>
-        lateinit var jugadorDesconocido: VistaJuegoFacil
+        var aciertoValor=false
+        lateinit var listaJugadores: MutableList<VistaJuego>
+        lateinit var jugadorDesconocido: VistaJuego
 
-        /**Genera una lista de jugadores para el modo facil
-         * @return Devulve una lista conformada por jugadore para el modo facil**/
-        suspend fun generarLista(): MutableList<VistaJuegoFacil> {
-            ControladorJuegoFacil.listaJugadores =
+        /**Genera una lista de jugadores del modo facil
+         * @return Devulve una lista conformada por jugadores del modo facil**/
+        suspend fun generarListaFacil(): MutableList<VistaJuego> {
+            ControladorJuego.listaJugadores =
                 ControladorBd.juegoFacilDao.obtenerJugadoresFacil(
                     ConfigGlobal.ligaSeleccionada
                 )
             listacreada=true
-            return ControladorJuegoFacil.listaJugadores
+            return ControladorJuego.listaJugadores
+        }
+        /**Genera una lista de jugadores del modo facil
+         * @return Devulve una lista conformada por jugadores del modo facil**/
+        suspend fun generarListaDificil(): MutableList<VistaJuego> {
+            ControladorJuego.listaJugadores =
+                ControladorBd.juegoDificilDao.obtenerJugadoresDificil(
+                    ConfigGlobal.ligaSeleccionada
+                )
+            listacreada=true
+            return ControladorJuego.listaJugadores
         }
 
         /**Devuelve un jugador aleatorio
          * @return Jugador aleatorio**/
-        fun elegirJugador(): VistaJuegoFacil {
-            val numeroAleatorio = (1..100).random()
+        fun elegirJugador(): VistaJuego {
+            val numeroAleatorio = (1..200).random()
             for (i in 1..numeroAleatorio) {
                 listaJugadores = listaJugadores.shuffled().toMutableList()
             }
@@ -55,7 +64,7 @@ class ControladorJuegoFacil {
             etPosicion.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_DONE || (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP)) {
                     val textoIngresado = etPosicion.text.toString()
-                    if (ControladorJuegoFacil.comprobarPosicion(textoIngresado)) {
+                    if (ControladorJuego.comprobarPosicion(textoIngresado)) {
                         tvPosicion.text = jugadorDesconocido.posicion
                         desvelarPosicion(tvPosicion,etPosicion,context)
                     } else {
@@ -126,11 +135,55 @@ class ControladorJuegoFacil {
                 return false
             }
         }
+        fun iniciarEscuchadorValor(etValor: EditText, tvValor: TextView, context: Context) {
+            etValor.setOnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE || (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP)) {
+                    val valorIngresado = etValor.text.toString().toDoubleOrNull()
+                    val valorJugador = jugadorDesconocido.valor_jugador.toDouble()
+
+                    if (valorIngresado != null && valorJugador != null) {
+                        when {
+                            valorIngresado == valorJugador -> {
+                                desvelarValor(tvValor,etValor,context)
+                            }
+                            valorIngresado < valorJugador -> {
+                                tvValor.text = "Mayor"
+                                tvValor.setTextColor(ContextCompat.getColor(v.context, android.R.color.holo_red_light))
+                                etValor.text.clear()
+                                Estadisticas.aumentarFallos()
+                            }
+                            else -> {
+                                tvValor.text = "Menor"
+                                tvValor.setTextColor(ContextCompat.getColor(v.context, android.R.color.holo_red_light))
+                                etValor.text.clear()
+                                Estadisticas.aumentarFallos()
+                            }
+                        }
+                    } else {
+                        tvValor.text = "Entrada inválida"
+                        tvValor.setTextColor(ContextCompat.getColor(v.context, android.R.color.holo_red_light))
+                        Estadisticas.aumentarFallos()
+                    }
+                    true
+                } else {
+                    false
+                }
+            }
+        }
+
+        fun comprobarValor(valor: String): Boolean {
+
+            if (valor==jugadorDesconocido.valor_jugador.toString()) {
+                return true
+            } else {
+                return false
+            }
+        }
         fun iniciarEscuchadorClub(etClub: EditText, ivClub: ImageView, context: Context) {
             etClub.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_DONE || (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP)) {
                     val textoIngresado = etClub.text.toString()
-                    if (ControladorJuegoFacil.comprobarClub(textoIngresado)) {
+                    if (ControladorJuego.comprobarClub(textoIngresado)) {
                        desvelarClub(ivClub,etClub,context)
                     } else {
                         Estadisticas.aumentarFallos()
@@ -155,9 +208,7 @@ class ControladorJuegoFacil {
             etPais.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_DONE || (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP)) {
                     val textoIngresado = etPais.text.toString()
-                    if (ControladorJuegoFacil.comprobarPais(textoIngresado)) {
-
-
+                    if (ControladorJuego.comprobarPais(textoIngresado)) {
                        desvelarPais(ivPais,etPais,context)
                     } else {
                         Estadisticas.aumentarFallos()
@@ -184,13 +235,43 @@ class ControladorJuegoFacil {
             tvEdad: TextView, etEdad: EditText,
             ivClub: ImageView, etClub: EditText,
             ivPais: ImageView, etPais: EditText,
+            tvValor: TextView,etValor: EditText,
             context: Context)
         {
             etJugador.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_DONE || (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP)) {
                     val textoIngresado = etJugador.text.toString()
-                    if (ControladorJuegoFacil.comprobarJugador(textoIngresado)) {
-                        desvelarCompleto(tvPosicion,etPosicion,tvEdad,etEdad,ivClub,etClub,ivPais,etPais,ivJugador,etJugador,context)
+                    if (ControladorJuego.comprobarJugador(textoIngresado)) {
+                        if (!ConfigGlobal.dificutadDificil) {
+                            desvelarCompletoFacil(
+                                tvPosicion,
+                                etPosicion,
+                                tvEdad,
+                                etEdad,
+                                ivClub,
+                                etClub,
+                                ivPais,
+                                etPais,
+                                ivJugador,
+                                etJugador,
+                                context
+                            )
+                        }else{
+                            desvelarCompletoDificil(
+                                tvPosicion,
+                                etPosicion,
+                                tvEdad,
+                                etEdad,
+                                ivClub,
+                                etClub,
+                                ivPais,
+                                etPais,
+                                ivJugador,
+                                etJugador,
+                                tvValor,etValor,
+                                context
+                            )
+                        }
                     } else {
                         Estadisticas.aumentarFallos()
 
@@ -237,6 +318,8 @@ class ControladorJuegoFacil {
         fun desvelarPosicion(tvPosicion: TextView, etPosicion: EditText,  context: Context) {
             tvPosicion.text = jugadorDesconocido.posicion
             tvPosicion.setTextColor(ContextCompat.getColor(context, android.R.color.holo_green_light))
+            aciertoPosicion=true
+            etPosicion.hint="Posición"
             etPosicion.isEnabled = false
             aciertoPosicion=true
         }
@@ -244,8 +327,17 @@ class ControladorJuegoFacil {
         fun desvelarEdad(tvEdad: TextView, etEdad: EditText, context: Context) {
             tvEdad.text = calcularEdad(jugadorDesconocido.edad_jugador)
             tvEdad.setTextColor(ContextCompat.getColor(context, android.R.color.holo_green_light))
-            etEdad.isEnabled = false
+            etEdad.hint="Edad"
             aciertoEdad=true
+            etEdad.isEnabled = false
+
+        }
+        fun desvelarValor(tvValor: TextView, etValor: EditText, context: Context) {
+            tvValor.text =jugadorDesconocido.valor_jugador.toString()
+            tvValor.setTextColor(ContextCompat.getColor(context, android.R.color.holo_green_light))
+            etValor.hint="Valor"
+            etValor.isEnabled = false
+            aciertoValor=true
         }
 
         fun desvelarClub(ivClub: ImageView, etClub: EditText, context: Context) {
@@ -256,9 +348,10 @@ class ControladorJuegoFacil {
             } else {
                 ivClub.setImageResource(R.drawable.logo1) // Imagen alternativa si no se encuentra
             }
-
-            etClub.isEnabled = false
+            etClub.hint=jugadorDesconocido.nombre_club
             aciertoClub=true
+            etClub.isEnabled = false
+
         }
 
         fun desvelarPais(ivPais: ImageView, etPais: EditText ,context: Context) {
@@ -269,9 +362,10 @@ class ControladorJuegoFacil {
             } else {
                 ivPais.setImageResource(R.drawable.logo1) // Imagen alternativa si no se encuentra
             }
-
-            etPais.isEnabled = false
+            etPais.hint=jugadorDesconocido.nombre_pais
             aciertoPais=true
+            etPais.isEnabled = false
+
         }
 
         fun desvelarJugador(ivJugador: ImageView, etJugador: EditText, context: Context) {
@@ -286,7 +380,7 @@ class ControladorJuegoFacil {
             etJugador.isEnabled = false
             aciertoJugador=true
         }
-        fun desvelarCompleto(
+        fun desvelarCompletoFacil(
             tvPosicion: TextView, etPosicion: EditText,
             tvEdad: TextView, etEdad: EditText,
             ivClub: ImageView, etClub: EditText,
@@ -300,8 +394,30 @@ class ControladorJuegoFacil {
             if(!aciertoPais)desvelarPais(ivPais, etPais, context)
             desvelarJugador(ivJugador, etJugador, context)
         }
+        fun desvelarCompletoDificil(
+            tvPosicion: TextView, etPosicion: EditText,
+            tvEdad: TextView, etEdad: EditText,
+            ivClub: ImageView, etClub: EditText,
+            ivPais: ImageView, etPais: EditText,
+            ivJugador: ImageView, etJugador: EditText,
+            tvValor: TextView,etValor: EditText,
+            context: Context
+        ) {
+            if(!aciertoPosicion)desvelarPosicion(tvPosicion, etPosicion, context)
+            if(!aciertoEdad)desvelarEdad(tvEdad, etEdad, context)
+            if(!aciertoClub)desvelarClub(ivClub, etClub, context)
+            if(!aciertoPais)desvelarPais(ivPais, etPais, context)
+            if(!aciertoValor)desvelarValor(tvValor,etValor,context)
+            desvelarJugador(ivJugador, etJugador, context)
+        }
         fun reiniciar(){
             listacreada=false
+            aciertoJugador=false
+            aciertoClub=false
+            aciertoPais=false
+            aciertoEdad=false
+            aciertoPosicion=false
+            aciertoValor=false
             Estadisticas.reiniciarFallos()
             Estadisticas.reiniciarAciertos()
         }
@@ -314,11 +430,12 @@ class ControladorJuegoFacil {
             aciertoPais=false
             aciertoEdad=false
             aciertoPosicion=false
+            aciertoValor=false
 
             Estadisticas.reiniciarFallos()
             Estadisticas.aumentarAciertos()
         }
-        fun pista(  tvPosicion: TextView, etPosicion: EditText,
+        fun pistaFacil(  tvPosicion: TextView, etPosicion: EditText,
                     tvEdad: TextView, etEdad: EditText,
                     ivClub: ImageView, etClub: EditText,
                     ivPais: ImageView, etPais: EditText,
@@ -330,6 +447,21 @@ class ControladorJuegoFacil {
                 "Edad"->desvelarEdad(tvEdad,etEdad,contexto)
                 "Club"->desvelarClub(ivClub,etClub,contexto)
                 "Pais"->desvelarPais(ivPais,etPais,contexto)
+            }
+        }
+        fun pistaDificil(  tvPosicion: TextView, etPosicion: EditText,
+                         tvEdad: TextView, etEdad: EditText,
+                         ivClub: ImageView, etClub: EditText,
+                         ivPais: ImageView, etPais: EditText,
+                         ivJugador: ImageView, etJugador: EditText,tvValor: TextView,etValor: EditText,contexto: Context){
+            val campos=listOf<String>("Posicion","Edad","Club","Pais","Valor");
+            val camposremovida=campos.shuffled()
+            when(camposremovida.first()){
+                "Posicion"->desvelarPosicion(tvPosicion,etPosicion,contexto);
+                "Edad"->desvelarEdad(tvEdad,etEdad,contexto)
+                "Club"->desvelarClub(ivClub,etClub,contexto)
+                "Pais"->desvelarPais(ivPais,etPais,contexto)
+                "Valor"->desvelarValor(tvValor,etValor,contexto)
             }
         }
 

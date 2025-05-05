@@ -5,6 +5,7 @@ import androidx.room.Query
 
 @Dao
 interface JuegoDificilDao {
-    @Query("Select * from VistaJuegoDificil where id_liga=:ligaSeleccionada")
-    suspend fun obtenerJugadoresFacil(ligaSeleccionada:Int): List<VistaJuegoFacil>
+    @Query("Select * from VistaJuego where id_liga=:ligaSeleccionada ")
+    suspend fun obtenerJugadoresDificil(ligaSeleccionada:Int): MutableList<VistaJuego>
+
 }

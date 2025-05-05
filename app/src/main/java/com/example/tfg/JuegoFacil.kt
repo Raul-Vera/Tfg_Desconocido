@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.tfg.Configuracion.ConfigGlobal
 import com.example.tfg.Controlador.ControladorBd
 import com.example.tfg.Controlador.ControladorJuegoFacil
+import com.example.tfg.Estadisticas.Estadisticas
 import com.example.tfg.Modelo.VistaJuegoFacil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,6 +30,7 @@ class JuegoFacil : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var etJugador=findViewById<EditText>(R.id.etJugador)
         var ivJugador=findViewById<ImageView>(R.id.ivJugador)
         var ivClub=findViewById<ImageView>(R.id.ivClub)
         var ivPais=findViewById<ImageView>(R.id.ivPais)
@@ -39,11 +41,23 @@ class JuegoFacil : AppCompatActivity() {
         var tvEdad=findViewById<TextView>(R.id.tvEdad)
         var tvPosicion=findViewById<TextView>(R.id.tvPosicion)
         lifecycleScope.launch(Dispatchers.IO) {
-            ControladorJuegoFacil.generarLista()
+            if(!ControladorJuegoFacil.listacreada) {
+                ControladorJuegoFacil.generarLista()
+                Log.d("ListaCreada","${ControladorJuegoFacil.listaJugadores.size}")
+            }
             ControladorJuegoFacil.jugadorDesconocido= ControladorJuegoFacil.elegirJugador()
             Log.d("Juegofacil","${ControladorJuegoFacil.jugadorDesconocido}")
             withContext (Dispatchers.Main){
                 ControladorJuegoFacil.iniciarEscuchadorPosicion(etPosicion,tvPosicion,this@JuegoFacil)
+                ControladorJuegoFacil.iniciarEscuchadorEdad(etEdad,tvEdad,this@JuegoFacil)
+                ControladorJuegoFacil.iniciarEscuchadorClub(etClub,ivClub,this@JuegoFacil)
+                ControladorJuegoFacil.iniciarEscuchadorPais(etPais,ivPais,this@JuegoFacil)
+                ControladorJuegoFacil.iniciarEscuchadorJugador(etJugador, ivJugador,
+                    tvPosicion, etPosicion,
+                    tvEdad, etEdad,
+                    ivClub, etClub,
+                    ivPais, etPais,
+                    this@JuegoFacil)
             }
         }
 

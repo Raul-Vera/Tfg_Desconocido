@@ -59,8 +59,15 @@ class InicioJuego : AppCompatActivity() {
         val facil = Intent(this, JuegoFacil::class.java)
     val dificil= Intent(this, JuegoDificil::class.java)
         lifecycleScope.launch(Dispatchers.IO) {
+
+
+
+
             ControladorBd.db = Room.databaseBuilder(applicationContext, AppDatabase::class.java,"DesconocidoBDv2.5"
             ).createFromAsset("BBDD/desconocidodbroomv2.db").build()
+
+
+
             Log.d("InicioJuego", "Base de datos creada correctamente")
             // Asignar vistadao en el hilo principal después de crear la base de datos
             withContext(Dispatchers.Main) {

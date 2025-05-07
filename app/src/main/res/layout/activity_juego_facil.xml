@@ -22,37 +22,57 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.177" />
 
-    <TextView
-        android:id="@+id/tvPosicion"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:background="#D5000000"
-        android:gravity="center"
-        android:text="Posicion"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.394"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
 
-    <TextView
-        android:id="@+id/tvEdad"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="#D5000000"
-        android:gravity="center"
-        android:text="Edad"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+        >
+        <TextView
+            android:id="@+id/tvPosicion"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:background="@drawable/carta2"
+            android:gravity="center"
+            android:text="Posicion"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23dp"
+             />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.394"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        >
+
+        <TextView
+            android:id="@+id/tvEdad"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:background="@drawable/carta2"
+            android:gravity="center"
+            android:text="Edad"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="23dp"
+            />
+    </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/etPais"
@@ -62,12 +82,14 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="20dp"
+        android:hint="Pais"
+        android:textColorHint="@color/black"
         android:maxLines="1"
         android:singleLine="true"
         android:imeOptions="actionDone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.870"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.816" />
@@ -116,40 +138,42 @@
         android:gravity="center"
         android:imeOptions="actionDone"
         android:maxLines="1"
+        android:hint="Club"
+        android:textColorHint="@color/black"
         android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.816" />
 
     <ImageView
         android:id="@+id/ivClub"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo1"
-
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/logotrans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
+        app:layout_constraintVertical_bias="0.708"
+        tools:src="@drawable/logvalladolid" />
 
     <ImageView
         android:id="@+id/ivPais"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo1"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/logotrans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.90"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <EditText
         android:id="@+id/etJugador"

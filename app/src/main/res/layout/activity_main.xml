@@ -9,10 +9,41 @@
     tools:background="@drawable/fondo_champions"
     android:background="@drawable/fondo_champions">
 
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logotrans"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Des-Cono-Cido"
+        android:textColor="#F86738"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:shadowColor="@color/white"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408" />
+
     <Button
         android:id="@+id/buComenzar"
-        android:layout_width="165dp"
-        android:layout_height="52dp"
+        android:layout_width="175dp"
+        android:layout_height="60dp"
         android:backgroundTint="@color/lightgreen"
         android:fontFamily="sans-serif-medium"
         android:text="Comenzar"

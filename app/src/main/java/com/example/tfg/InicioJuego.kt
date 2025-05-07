@@ -3,6 +3,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,7 @@ class InicioJuego : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var ivIconoCasa = findViewById<ImageView>(R.id.ivIconoCasa)
         buIniciar = findViewById<Button>(R.id.buIniciar)
         tvModo = findViewById<TextView>(R.id.tvModo)
         tvLiga = findViewById<TextView>(R.id.tvLiga)
@@ -49,6 +51,11 @@ class InicioJuego : AppCompatActivity() {
         buIniciar.setOnClickListener{
             Log.d("Button","El boton de iniciar fue pulsado")
             iniciar()
+        }
+        ivIconoCasa.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 /**

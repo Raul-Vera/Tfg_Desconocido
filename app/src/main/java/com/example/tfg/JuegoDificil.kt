@@ -53,7 +53,12 @@ class JuegoDificil : AppCompatActivity() {
                 Log.d("ListaCreada", "${ControladorJuego.listaJugadores.size}")
             }
             ControladorJuego.jugadorDesconocido = ControladorJuego.elegirJugador()
-            Log.d("Juegofacil", "${ControladorJuego.jugadorDesconocido}")
+            Log.d("Jugador Seleccionado", ControladorJuego.jugadorDesconocido.apodo_jugador+
+                    " "+ ControladorJuego.jugadorDesconocido.edad_jugador+
+                    " "+ ControladorJuego.jugadorDesconocido.posicion+
+                    " "+ ControladorJuego.jugadorDesconocido.nombre_pais+
+                    " "+ ControladorJuego.jugadorDesconocido.nombre_club+
+                    " "+ ControladorJuego.jugadorDesconocido.valor_jugador)
             withContext(Dispatchers.Main) {
                 ControladorJuego.iniciarEscuchadorPosicion(
                     etPosicion,

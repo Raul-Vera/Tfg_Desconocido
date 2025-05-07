@@ -5,17 +5,34 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@drawable/fondo_champions"
     tools:background="@drawable/fondo_champions"
-    android:background="@drawable/fondo_champions">
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivIconoCasa"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/circle_background"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/tvModo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#5C212020"
-        android:text="Modo : "
-        android:textColor="@color/white"
+        android:text="Has seleccionado el modo : "
+        android:textColor="#F86738"
+        android:textStyle="bold"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,14 +40,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.244"></TextView>
+
     <TextView
         android:id="@+id/tvLiga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#5C212020"
-        android:text="Liga : "
-        android:textColor="@color/white"
+        android:text="La liga elegida es : "
+        android:textColor="#F86738"
         android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.297"

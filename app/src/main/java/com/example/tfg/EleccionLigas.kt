@@ -2,6 +2,8 @@ package com.example.tfg
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -37,15 +39,22 @@ class EleccionLigas : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var ivIconoCasa = findViewById<ImageView>(R.id.ivIconoCasa)
         rvListaLigas = findViewById<RecyclerView>(R.id.rvlistaLigas)
         val adapter = AdaptadorListaLigas(listaLigas, this) { id ->
             val intent = Intent(this, InicioJuego::class.java)
             ConfigGlobal.seleccionarLiga(id)
+            Log.d("Selección liga","Se ha seleccionado la liga"+ ConfigGlobal.ligaSeleccionada)
             startActivity(intent)
             finish()
             print("Se selecciono esta liga " + ConfigGlobal.ligaSeleccionada)
         }
         rvListaLigas.layoutManager= LinearLayoutManager(this)
         rvListaLigas.adapter=adapter
+        ivIconoCasa.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

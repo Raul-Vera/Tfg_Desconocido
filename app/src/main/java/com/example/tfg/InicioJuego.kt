@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
-import com.example.tfg.Configuracion.ConfigGlobal
+import com.example.tfg.Controlador.Configuracion.ConfigGlobal
 import com.example.tfg.Controlador.ControladorBd
 import com.example.tfg.Modelo.AppDatabase
 import kotlinx.coroutines.Dispatchers

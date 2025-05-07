@@ -1,4 +1,4 @@
-package com.example.tfg.Estadisticas
+package com.example.tfg.Controlador.Estadisticas
 
 class Estadisticas {
     companion object{

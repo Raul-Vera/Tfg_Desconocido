@@ -1,4 +1,4 @@
-package com.example.tfg.Configuracion
+package com.example.tfg.Controlador.Configuracion
 
 class ConfigGlobal {
     companion object{

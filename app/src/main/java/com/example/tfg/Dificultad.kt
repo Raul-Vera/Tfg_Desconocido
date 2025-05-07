@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.tfg.Configuracion.ConfigGlobal
+import com.example.tfg.Controlador.Configuracion.ConfigGlobal
 
 class Dificultad : AppCompatActivity() {
     lateinit var buFacil: Button

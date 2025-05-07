@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tfg.Controlador.ControladorJuego
 import com.example.tfg.Controlador.ControladorJuego.Companion.jugadorDesconocido
-import com.example.tfg.Estadisticas.Estadisticas
+import com.example.tfg.Controlador.Estadisticas.Estadisticas
 
 class PartidaPerdida : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

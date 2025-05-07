@@ -13,7 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.tfg.Controlador.ControladorJuego
-import com.example.tfg.Estadisticas.Estadisticas
+import com.example.tfg.Controlador.Estadisticas.Estadisticas
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

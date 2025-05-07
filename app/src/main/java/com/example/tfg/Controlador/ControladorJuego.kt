@@ -7,8 +7,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.example.tfg.Configuracion.ConfigGlobal
-import com.example.tfg.Estadisticas.Estadisticas
+import com.example.tfg.Controlador.Configuracion.ConfigGlobal
+import com.example.tfg.Controlador.Estadisticas.Estadisticas
 import com.example.tfg.Modelo.VistaJuego
 import com.example.tfg.R
 import com.squareup.picasso.Picasso
@@ -49,7 +49,7 @@ class ControladorJuego {
         /**Devuelve un jugador aleatorio
          * @return Jugador aleatorio**/
         fun elegirJugador(): VistaJuego {
-            val numeroAleatorio = (1..200).random()
+            val numeroAleatorio = (100..500).random()
             for (i in 1..numeroAleatorio) {
                 listaJugadores = listaJugadores.shuffled().toMutableList()
             }

@@ -240,6 +240,7 @@ class ControladorJuego {
                         Estadisticas.aumentarFallos()
                         shakeEditText(etClub)
                         etClub.text.clear()
+                        etClub.hint="Club"
                     }
                     true // Indica que manejaste la acción
                 } else {
@@ -266,6 +267,7 @@ class ControladorJuego {
                         Estadisticas.aumentarFallos()
                         shakeEditText(etPais)
                         etPais.text.clear()
+                        etPais.hint="Pais"
                     }
                     true // Indica que manejaste la acción
                 } else {

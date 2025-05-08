@@ -14,7 +14,7 @@
         android:id="@+id/ivJugador"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:background="@drawable/jugadordesconocido"
+        android:src="@drawable/jugadordesconocido"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

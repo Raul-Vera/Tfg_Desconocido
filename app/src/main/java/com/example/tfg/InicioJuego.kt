@@ -120,7 +120,7 @@ class InicioJuego : AppCompatActivity() {
 
 
 
-            ControladorBd.db = Room.databaseBuilder(applicationContext, AppDatabase::class.java,"DesconocidoBDv2.5"
+            ControladorBd.db = Room.databaseBuilder(applicationContext, AppDatabase::class.java,"DesconocidoBDv2.6"
             ).createFromAsset("BBDD/desconocidodbroomv2.db").build()
 
 

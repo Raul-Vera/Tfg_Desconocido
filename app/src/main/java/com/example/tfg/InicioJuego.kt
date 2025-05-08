@@ -112,9 +112,9 @@ class InicioJuego : AppCompatActivity() {
  * Se encarga de crear la base de datos a partir de el recurso que se encuentra en assets/BBDD**/
     fun iniciar() {
         Log.d("InicioJuego", "La función iniciar() ha sido llamada")
-
-        val facil = Intent(this, JuegoFacil::class.java)
     val dificil= Intent(this, JuegoDificil::class.java)
+        val facil = Intent(this, JuegoFacil::class.java)
+
         lifecycleScope.launch(Dispatchers.IO) {
 
 

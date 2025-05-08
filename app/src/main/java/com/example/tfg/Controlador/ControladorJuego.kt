@@ -239,12 +239,6 @@ class ControladorJuego {
                     } else {
                         Estadisticas.aumentarFallos()
                         shakeEditText(etClub)
-                        etClub.setHintTextColor(
-                            ContextCompat.getColor(
-                                v.context,
-                                android.R.color.holo_red_light
-                            )
-                        )
                         etClub.text.clear()
                     }
                     true // Indica que manejaste la acción
@@ -271,12 +265,6 @@ class ControladorJuego {
                     } else {
                         Estadisticas.aumentarFallos()
                         shakeEditText(etPais)
-                        etPais.setHintTextColor(
-                            ContextCompat.getColor(
-                                v.context,
-                                android.R.color.holo_red_light
-                            )
-                        )
                         etPais.text.clear()
                     }
                     true // Indica que manejaste la acción
@@ -411,6 +399,7 @@ class ControladorJuego {
         fun desvelarValor(tvValor: TextView, etValor: EditText, context: Context) {
             tvValor.text = jugadorDesconocido.valor_jugador.toString()
             tvValor.setTextColor(ContextCompat.getColor(context, android.R.color.holo_green_light))
+            tvValor.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35f)
             etValor.hint = "Valor"
             etValor.isEnabled = false
             aciertoValor = true
@@ -429,12 +418,8 @@ class ControladorJuego {
                 ivClub.setImageResource(R.drawable.logo1) // Imagen alternativa si no se encuentra
             }
             etClub.hint = jugadorDesconocido.nombre_club
-            etClub.setHintTextColor(
-                ContextCompat.getColor(
-                    context,
-                    android.R.color.holo_green_light
-                )
-            )
+            etClub.text.clear()
+            etClub.hint=jugadorDesconocido.nombre_club
             aciertoClub = true
             etClub.isEnabled = false
 
@@ -449,15 +434,10 @@ class ControladorJuego {
 
             if (resourceId != 0) { // Verifica que la imagen existe
                 Picasso.get().load(resourceId).into(ivPais)
-                etPais.setHintTextColor(
-                    ContextCompat.getColor(
-                        context,
-                        android.R.color.holo_green_light
-                    )
-                )
             } else {
                 ivPais.setImageResource(R.drawable.logotrans) // Imagen alternativa si no se encuentra
             }
+            etPais.text.clear()
             etPais.hint = jugadorDesconocido.nombre_pais
             aciertoPais = true
             etPais.isEnabled = false
@@ -476,7 +456,8 @@ class ControladorJuego {
             } else {
                 ivJugador.setImageResource(R.drawable.logo1) // Imagen alternativa si no se encuentra
             }
-
+            etJugador.text.clear()
+            etJugador.hint=jugadorDesconocido.apodo_jugador
             etJugador.isEnabled = false
             aciertoJugador = true
         }

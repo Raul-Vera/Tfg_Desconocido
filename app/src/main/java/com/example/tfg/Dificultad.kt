@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -26,17 +27,18 @@ class Dificultad : AppCompatActivity() {
             insets
         }
         var ivIconoCasa = findViewById<ImageView>(R.id.ivIconoCasa)
-        buFacil=findViewById<Button>(R.id.buFacil)
-        buDificil=findViewById<Button>(R.id.buDificil)
+        var ivIconoSalida = findViewById<ImageView>(R.id.ivIconoSalida)
+        buFacil = findViewById<Button>(R.id.buFacil)
+        buDificil = findViewById<Button>(R.id.buDificil)
         buFacil.setOnClickListener {
             ConfigGlobal.cambiarDificultad(false)
-            Log.d("Dificultad","Valor de dificultadDificil "+ConfigGlobal.dificutadDificil)
+            Log.d("Dificultad", "Valor de dificultadDificil " + ConfigGlobal.dificutadDificil)
             startActivity(Intent(this, EleccionLigas::class.java))
             finish()
         }
         buDificil.setOnClickListener {
             ConfigGlobal.cambiarDificultad(true)
-            Log.d("Dificultad","Valor de dificultadDificil "+ConfigGlobal.dificutadDificil)
+            Log.d("Dificultad", "Valor de dificultadDificil " + ConfigGlobal.dificutadDificil)
             startActivity(Intent(this, EleccionLigas::class.java))
             finish()
         }
@@ -44,6 +46,17 @@ class Dificultad : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        ivIconoSalida.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("¡Detente!")
+                .setMessage("Me vas a hacer la de Figo?")
+                .setPositiveButton("Sí,me voy a otra App") { _, _ -> finishAndRemoveTask() }
+                .setNegativeButton(
+                    "No,soy leal como Totti",
+                    null
+                )
+                .show()
         }
     }
 }

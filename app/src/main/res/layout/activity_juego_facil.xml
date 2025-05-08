@@ -14,10 +14,10 @@
         android:id="@+id/ivJugador"
         android:layout_width="140dp"
         android:layout_height="140dp"
-
+        android:background="@drawable/jugadordesconocido"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.177" />
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.885"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.394"
@@ -42,7 +42,7 @@
             android:background="@drawable/carta2"
             android:gravity="center"
             android:text="Posicion"
-            android:textColor="@color/white"
+            android:textColor="@color/lightgreen"
             android:textStyle="bold"
             android:textSize="23dp"
              />
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.394"
@@ -68,87 +68,115 @@
             android:background="@drawable/carta2"
             android:gravity="center"
             android:text="Edad"
-            android:textColor="@color/white"
+            android:textColor="@color/lightgreen"
             android:textStyle="bold"
             android:textSize="23dp"
             />
     </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/etPais"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:hint="Pais"
-        android:textColorHint="@color/black"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:imeOptions="actionDone"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.870"
+        app:layout_constraintHorizontal_bias="0.90"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+        app:layout_constraintVertical_bias="0.816"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp">
 
-    <EditText
-        android:id="@+id/etPosicion"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:imeOptions="actionDone"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        <EditText
+            android:id="@+id/etPais"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:hint="Pais"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="#BAB7B7"
+            android:textSize="20dp" />
+    </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/etEdad"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textSize="20dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.533"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp">
+        <EditText
+            android:id="@+id/etPosicion"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:imeOptions="actionDone"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="20dp"
+             />
+    </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/etClub"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:hint="Club"
-        android:textColorHint="@color/black"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+        app:layout_constraintVertical_bias="0.533"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp">
+        <EditText
+            android:id="@+id/etEdad"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="20dp"
+             />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.816"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp">
+        <EditText
+            android:id="@+id/etClub"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:hint="Club"
+            android:textColorHint="#AFA5A5"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            />
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/ivClub"
@@ -157,7 +185,7 @@
         android:src="@drawable/logotrans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.708"
@@ -170,26 +198,33 @@
         android:src="@drawable/logotrans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.90"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.72" />
 
-    <EditText
-        android:id="@+id/etJugador"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94"
-        android:background="@color/lightgreen"/>
+    <androidx.cardview.widget.CardView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.5"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.94"
+       app:cardCornerRadius="12dp"
+       app:cardElevation="6dp">
+       <EditText
+           android:id="@+id/etJugador"
+           android:layout_width="150dp"
+           android:layout_height="40dp"
+           android:imeOptions="actionDone"
+           android:maxLines="1"
+           android:hint="Nombre"
+           android:singleLine="true"
+           android:gravity="center"
+           android:background="@color/lightgreen"/>
+   </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/ivIconoCasa"
@@ -206,6 +241,21 @@
         android:scaleType="centerInside"
         android:padding="10dp"
         android:layout_gravity="center"/>
+    <ImageView
+        android:id="@+id/ivIconoSalida"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/circle_background"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
         android:id="@+id/ivIconoContinuar"
@@ -230,7 +280,7 @@
         android:text="Fallos : "
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/lightgreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.305"
@@ -243,7 +293,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aciertos : "
-        android:textColor="@color/white"
+        android:textColor="@color/lightgreen"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

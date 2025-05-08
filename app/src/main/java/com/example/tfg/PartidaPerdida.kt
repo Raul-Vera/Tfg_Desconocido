@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -23,6 +24,8 @@ class PartidaPerdida : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val ivIconoCasa=findViewById<ImageView>(R.id.ivIconoCasa)
+        val ivIconoSalida=findViewById<ImageView>(R.id.ivIconoSalida)
         val tvCono=findViewById<TextView>(R.id.tvCono)
         val tvRacha=findViewById<TextView>(R.id.tvRacha)
         val buReiniciar=findViewById<Button>(R.id.buReiniciar)
@@ -37,6 +40,19 @@ class PartidaPerdida : AppCompatActivity() {
             ControladorJuego.reiniciar()
             startActivity(casa)
             finish()
+        }
+        ivIconoCasa.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        ivIconoSalida.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("¡Detente!")
+                .setMessage("Me vas a hacer la de Figo?")
+                .setPositiveButton("Sí,me voy a otra App") { _, _ -> finishAndRemoveTask() }
+                .setNegativeButton("No,soy leal como Totti", null)
+                .show()
         }
     }
 }

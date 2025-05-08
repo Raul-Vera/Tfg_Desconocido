@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -40,6 +41,7 @@ class EleccionLigas : AppCompatActivity() {
             insets
         }
         var ivIconoCasa = findViewById<ImageView>(R.id.ivIconoCasa)
+        var ivIconoSalida = findViewById<ImageView>(R.id.ivIconoSalida)
         rvListaLigas = findViewById<RecyclerView>(R.id.rvlistaLigas)
         val adapter = AdaptadorListaLigas(listaLigas, this) { id ->
             val intent = Intent(this, InicioJuego::class.java)
@@ -55,6 +57,14 @@ class EleccionLigas : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        ivIconoSalida.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("¡Detente!")
+                .setMessage("Me vas a hacer la de Figo?")
+                .setPositiveButton("Sí,me voy a otra App") { _, _ -> finishAndRemoveTask() } // Cierra la aplicación
+                .setNegativeButton("No,soy leal como Totti", null) // No hace nada, simplemente cierra el diálogo
+                .show()
         }
     }
 }

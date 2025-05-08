@@ -5,16 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@drawable/fondo_champions"
     tools:background="@drawable/fondo_champions"
-    android:background="@drawable/fondo_champions">
+    tools:context=".MainActivity">
 
 
     <ImageView
         android:id="@+id/ivJugador"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-
+        android:layout_width="146dp"
+        android:layout_height="145dp"
+        android:background="@drawable/jugadordesconocido"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,199 +22,281 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.177" />
 
-    <TextView
-        android:id="@+id/tvPosicion"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:background="#D5000000"
-        android:gravity="center"
-        android:text="Posicion"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.414">
 
-    <TextView
-        android:id="@+id/tvEdad"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="#D5000000"
-        android:gravity="center"
-        android:text="Edad"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
-    <TextView
-        android:id="@+id/tvValor"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="#D5000000"
-        android:gravity="center"
-        android:text="Valor"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        <TextView
+            android:id="@+id/tvPosicion"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:background="@drawable/carta2"
+            android:gravity="center"
+            android:text="Posicion"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/etPais"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:imeOptions="actionDone"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+        app:layout_constraintVertical_bias="0.414">
 
-    <EditText
-        android:id="@+id/etPosicion"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:imeOptions="actionDone"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textSize="20dp"
+        <TextView
+            android:id="@+id/tvEdad"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:background="@drawable/carta2"
+            android:gravity="center"
+            android:text="Edad"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.414">
 
-    <EditText
-        android:id="@+id/etEdad"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textSize="20dp"
+        <TextView
+            android:id="@+id/tvValor"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:background="@drawable/carta2"
+            android:gravity="center"
+            android:text="Valor"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.897"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.826"
+        android:elevation="6dp"
+        app:cardCornerRadius="12dp">
+        <EditText
+            android:id="@+id/etPais"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+             />
+    </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/etValor"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.553"
+        android:elevation="6dp"
+        app:cardCornerRadius="12dp">
+        <EditText
+            android:id="@+id/etPosicion"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+             />
+    </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/etClub"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:background="#D6FFFFFF"
-        android:gravity="center"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.553"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp">
+        <EditText
+            android:id="@+id/etEdad"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+             />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.553"
+        app:cardCornerRadius="12dp"
+        android:elevation="6dp">
+        <EditText
+            android:id="@+id/etValor"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+             />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+        app:layout_constraintVertical_bias="0.826"
+        android:elevation="6dp"
+        app:cardCornerRadius="12dp">
+        <EditText
+            android:id="@+id/etClub"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+             />
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/ivClub"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo1"
-
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/logotrans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
+        app:layout_constraintVertical_bias="0.728" />
 
     <ImageView
         android:id="@+id/ivPais"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo1"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/logotrans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.90"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
+        app:layout_constraintVertical_bias="0.728" />
 
-    <EditText
-        android:id="@+id/etJugador"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:gravity="center"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.94"
-        android:background="@color/lightgreen"/>
+        android:elevation="6dp"
+        app:cardCornerRadius="12dp">
+        <EditText
+            android:id="@+id/etJugador"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:background="@color/lightgreen"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:singleLine="true"
+             />
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/ivIconoCasa"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/circle_background"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <ImageView
+        android:id="@+id/ivIconoSalida"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
         android:background="@drawable/circle_background"
-        android:src="@drawable/ic_home"
-        android:scaleType="centerInside"
         android:padding="10dp"
-        android:layout_gravity="center"/>
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
         android:id="@+id/ivIconoContinuar"
@@ -237,9 +319,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fallos : "
-        android:textSize="20dp"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.305"
@@ -253,7 +335,7 @@
         android:layout_height="wrap_content"
         android:text="Aciertos : "
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

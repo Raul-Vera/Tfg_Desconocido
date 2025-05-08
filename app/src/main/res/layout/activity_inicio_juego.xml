@@ -24,38 +24,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
+    <ImageView
+        android:id="@+id/ivIconoSalida"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/circle_background"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/tvModo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#5C212020"
-        android:text="Has seleccionado el modo : "
+        android:text=""
+        android:shadowColor="@color/white"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="5"
         android:textColor="#F86738"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.297"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.244"></TextView>
+        app:layout_constraintVertical_bias="0.244"/>
 
-    <TextView
-        android:id="@+id/tvLiga"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5C212020"
-        android:text="La liga elegida es : "
-        android:textColor="#F86738"
-        android:textSize="25dp"
-        android:textStyle="bold"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35"></TextView>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvCita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:background="#33000000"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <TextView
+            android:background="#33000000"
+            android:id="@+id/tvAutor"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:paddingTop="8dp"
+            android:textColor="@color/white"
+            android:textSize="19sp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/buIniciar"
